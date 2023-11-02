@@ -131,6 +131,7 @@ dependencies {
         Modules.coreCommon,
         Modules.coreNetwork,
         Modules.coreDatastore,
+        Modules.coreData,
         Modules.coreDI,
         Modules.installer
     )

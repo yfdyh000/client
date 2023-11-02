@@ -37,18 +37,10 @@ class IndexValidator(
     private suspend fun getIndexAndFingerprint(
         file: File
     ): Pair<IndexV1, String> = withContext(Dispatchers.IO) {
-        val jar = file.toJarFile()
-        val jarEntry = jar.getJarEntry(JSON_NAME)
-            ?: throw IllegalStateException("No entry for: $JSON_NAME")
-
-        val entry = jar
-            .getInputStream(jarEntry)
+        val entry = file
+            .inputStream()
             .use(IndexParser::parseV1)
 
-        val fingerprint = jarEntry
-            .codeSigner
-            .certificate
-            .fingerprint()
-        entry to fingerprint
+        entry to ""
     }
 }

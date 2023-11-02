@@ -1,5 +1,6 @@
 package com.looker.core.data.fdroid.sync
 
+import com.looker.core.common.extension.writeTo
 import com.looker.core.common.signature.FileValidator
 import com.looker.core.data.fdroid.sync.signature.EntryValidator
 import com.looker.core.data.fdroid.sync.signature.IndexValidator
@@ -42,19 +43,14 @@ class IndexDownloaderImpl @Inject constructor(
             repoFingerprint = fingerprint
             fileIndex = index
         }
-        val (_, response) = downloadIndexFile(repo, INDEX_V1_FILE_NAME, validator)
-        val isFingerprintAndIndexValid = repoFingerprint == null ||
-            fileIndex == null ||
-            repoFingerprint?.isBlank() == true ||
-            response is NetworkResponse.Error
-        if (isFingerprintAndIndexValid) {
-            throw IllegalStateException("Fingerprint: $repoFingerprint, Index: $fileIndex")
-        }
+        val file = File.createTempFile("index-v1", repo.name)
+        this::class.java.classLoader?.getResourceAsStream("index-v1.json")?.writeTo(file)
+        validator.validate(file)
         IndexDownloadResponse(
             index = fileIndex!!,
             fingerprint = repoFingerprint!!,
             lastModified = fileIndex?.repo?.timestamp,
-            etag = (response as NetworkResponse.Success).etag
+            etag = null
         )
     }
 
@@ -99,7 +95,7 @@ class IndexDownloaderImpl @Inject constructor(
     }
 
     override suspend fun determineIndexType(repo: Repo): IndexType {
-        val isIndexV2 = downloader.headCall(repo.indexUrl(ENTRY_FILE_NAME))
+        val isIndexV2: NetworkResponse = NetworkResponse.Error.Http(1)
         return if (isIndexV2 is NetworkResponse.Success) {
             IndexType.ENTRY
         } else {

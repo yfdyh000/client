@@ -1,0 +1,69 @@
+{
+    "repo": {
+        "timestamp": 1698710000000,
+        "version": 20002,
+        "maxage": 14,
+        "name": "F-Droid",
+        "icon": "fdroid-icon.png",
+        "address": "https://f-droid.org/repo",
+        "description": "",
+        "mirrors": []
+    },
+    "requests": {
+        "install": [],
+        "uninstall": []
+    },
+    "apps": [],
+    "packages": {
+        "An.stop": [
+            {
+                "added": 1344556800000,
+                "apkName": "An.stop_10.apk",
+                "hash": "78ec7805f5a49b156fbd5f6af174c1cd8ae9900c9c7af2b2df021aca8cd5eae9",
+                "hashType": "sha256",
+                "minSdkVersion": 4,
+                "packageName": "An.stop",
+                "sig": "656b1a52bfd3a1d724d8f3ffb5cdc22c",
+                "signer": "1a7974d7d08f0038ee40fbf44a9deeddd0fee8b2cf2df5f6449e869c75ec70fb",
+                "size": 66218,
+                "srcname": "An.stop_10_src.tar.gz",
+                "uses-permission": [
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ]
+                ],
+                "versionCode": 10,
+                "versionName": "1.5"
+            },
+            {
+                "added": 1309737600000,
+                "apkName": "An.stop_9.apk",
+                "hash": "79f5253bab33cf4030b01fec457fd6ffa4fd54b631ee0bc4c1549fbb69ca6680",
+                "hashType": "sha256",
+                "minSdkVersion": 4,
+                "packageName": "An.stop",
+                "sig": "656b1a52bfd3a1d724d8f3ffb5cdc22c",
+                "signer": "1a7974d7d08f0038ee40fbf44a9deeddd0fee8b2cf2df5f6449e869c75ec70fb",
+                "size": 49763,
+                "srcname": "An.stop_9_src.tar.gz",
+                "uses-permission": [
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ]
+                ],
+                "versionCode": 9,
+                "versionName": "1.4"
+            }
+        ]
+    }
+}
