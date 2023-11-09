@@ -61,7 +61,7 @@ class SettingsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val createExportFileForSettings =
-        registerForActivityResult(CreateDocument("application/json")) { fileUri ->
+        registerForActivityResult(new CreateDocument("application/json")) { fileUri ->
             if (fileUri != null) {
                 viewModel.exportSettings(fileUri)
             }
@@ -77,7 +77,7 @@ class SettingsFragment : Fragment() {
         }
 
     private val createExportFileForRepos =
-        registerForActivityResult(CreateDocument("application/json")) { fileUri ->
+        registerForActivityResult(new CreateDocument("application/json")) { fileUri ->
             if (fileUri != null) {
                 viewModel.exportRepos(fileUri)
             }
